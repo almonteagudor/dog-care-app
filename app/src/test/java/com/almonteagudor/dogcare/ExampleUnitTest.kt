@@ -1,4 +1,4 @@
-package com.almonteagudor.dog_care
+package com.almonteagudor.dogcare
 
 import org.junit.Test
 

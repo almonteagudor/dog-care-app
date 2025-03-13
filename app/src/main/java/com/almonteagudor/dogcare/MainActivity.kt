@@ -1,4 +1,4 @@
-package com.almonteagudor.dog_care
+package com.almonteagudor.dogcare
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -11,7 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.almonteagudor.dog_care.ui.theme.DogcareTheme
+import com.almonteagudor.dogcare.ui.theme.DogcareTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

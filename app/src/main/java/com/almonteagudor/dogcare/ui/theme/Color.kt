@@ -1,4 +1,4 @@
-package com.almonteagudor.dog_care.ui.theme
+package com.almonteagudor.dogcare.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

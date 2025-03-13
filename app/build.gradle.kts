@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.almonteagudor.dog_care"
+    namespace = "com.almonteagudor.dogcare"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.almonteagudor.dog_care"
+        applicationId = "com.almonteagudor.dogcare"
         minSdk = 24
         targetSdk = 35
         versionCode = 1
