@@ -8,6 +8,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.almonteagudor.dogcare.presentation.medicines.AddMedicineScreen
 import com.almonteagudor.dogcare.presentation.medicines.MedicineScreen
 import com.almonteagudor.dogcare.ui.theme.DogcareTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -19,7 +23,24 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             DogcareTheme {
-                MedicineScreen()
+                val navController = rememberNavController()
+
+                NavHost(
+                    navController = navController,
+                    startDestination = "medicine_list"
+                ) {
+                    composable("medicine_list") {
+                        MedicineScreen(onAddMedicineClick = {
+                            navController.navigate("add_medicine")
+                        })
+                    }
+                    composable("add_medicine") {
+                        AddMedicineScreen(
+                            onMedicineAdded = { navController.navigate("medicine_list") },
+                            onError = { errorMessage -> }
+                        )
+                    }
+                }
             }
         }
     }

@@ -7,6 +7,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.CenterAlignedTopAppBar
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.MaterialTheme
@@ -18,7 +19,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MedicineScreen(
-    viewModel: MedicineViewModel = hiltViewModel()
+    viewModel: MedicineViewModel = hiltViewModel(),
+    onAddMedicineClick: () -> Unit,
 ) {
     val uiState by viewModel.uiState.collectAsState()
 
@@ -27,6 +29,11 @@ fun MedicineScreen(
             CenterAlignedTopAppBar(
                 title = { Text(text = "Medicamentos") }
             )
+        },
+        floatingActionButton = {
+            FloatingActionButton(onClick = onAddMedicineClick) {
+                Text("+")
+            }
         },
         content = { paddingValues ->
             Box(
@@ -40,6 +47,7 @@ fun MedicineScreen(
                             modifier = Modifier.align(Alignment.Center)
                         )
                     }
+
                     uiState.error != null -> {
                         Text(
                             text = uiState.error ?: "Error desconocido",
@@ -47,6 +55,7 @@ fun MedicineScreen(
                             modifier = Modifier.align(Alignment.Center)
                         )
                     }
+
                     else -> {
                         LazyColumn(modifier = Modifier.fillMaxSize()) {
                             items(uiState.medicines) { medicine ->
